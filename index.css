@@ -1,0 +1,134 @@
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {  
+    opacity: 1;
+}
+
+body{
+    margin:0;
+    padding: 0;
+    font-family: 'Martel', serif;
+}
+
+ul{
+    margin:0;
+    padding: 5px;
+}
+
+#container{
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+    min-height: 100vh;
+}
+
+#container>div{ flex: 1;  }
+
+/* #produtos-display{
+} */
+
+#carrinho-display{
+    max-width: 30vw;
+}
+
+#produtos-container, #carrinho-container{
+    background-color: white;
+    box-shadow: 0 0 5px rgba(0,0,0,.5);
+    margin:10px;
+    min-height: 90vh;
+}
+
+#produtos-container>h3, #carrinho-container>h3{
+    padding: 0;
+    margin: 0;
+    padding: 5px 10px;
+    text-align: right;
+} 
+
+#produtos-container{
+    border: 1px solid red;
+    flex-grow: 1;
+}
+
+#carrinho-container{
+    border: 1px solid blue;
+}
+
+#lista-produtos li{
+    border: 1px solid silver;
+    box-shadow: 0 0 10px rgba(0,0,0,.5);
+    width: 190px;
+    text-align: center;
+    padding: 5px;
+    margin: 5px;
+}
+
+.action-buttons{
+    display: flex;
+    justify-content: space-around;
+}
+
+.action-buttons button{
+    background-color: blue;
+    border: none;
+    border-radius: 3px;
+    padding: 10px;
+    color: white;
+    outline: none;
+}
+
+.action-buttons button:hover{
+    background-color: #3333ff;
+}
+
+#lista-produtos{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+}
+
+#lista-produtos li img{
+    width: 125px;
+    height: 125px;
+    
+}
+
+#lista-carrinho li{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    box-shadow: 0 3px 6px rgba(0,0,0,.3);
+    padding: 10px;
+}
+
+#lista-carrinho li input{
+    width: 35px;
+    height: 35px;
+    padding: 5px;
+    text-align: center;
+    font-size: 16px;
+    border:none;
+    outline: none;
+}
+
+#lista-carrinho li img{
+    width: 45px;
+    height: 45px;
+}
+
+.remover-item{
+    border: none;
+    background-image: url("./imagens/trash.svg");
+    background-size: 1.2em 1.2em;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 2em;
+    height: 2em;
+    outline: none;
+}
+
+.total{
+    padding:5px;
+}
+.total p{
+    text-align: right;
+}
