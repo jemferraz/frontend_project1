@@ -57,7 +57,7 @@ const storageHandler = {
     const obj = JSON.parse(this.storage.getItem(this.key) || '[]').sort();
     obj['price'] = parseFloat(obj['price']);
     obj['quantity'] = parseInt(obj['quantity']);
-    return obj
+    return obj;
   },
 };
 
