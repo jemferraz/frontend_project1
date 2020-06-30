@@ -1,7 +1,7 @@
-// Obter a lista de produtos como Elemento (UL)
+// Obter a lista de produtos como Elemento (ul)
 const listaProdutos = document.querySelector('#lista-produtos');
 
-//Vamos transformar a lista de produtos disponíveis no html em uma lista de nodes
+//Vamos transformar a lista de produtos disponíveis no html em uma lista de elementos
 const listaProdutosLi = [...listaProdutos.querySelectorAll('li')];
 
 //Lista de compras (carrinho), com os produtos (objetos)
@@ -54,7 +54,7 @@ const storageHandler = {
     else throw 'O valor passado para storageHandler.setItems() deve ser Array';
   },
   getItems: function () {
-    const obj = JSON.parse(this.storage.getItem(this.key) || '[]').sort();
+    const obj = JSON.parse(this.storage.getItem(this.key) || '[]');
     obj['price'] = parseFloat(obj['price']);
     obj['quantity'] = parseInt(obj['quantity']);
     return obj;
@@ -102,14 +102,14 @@ const changeQuantitydById = (qtd, id) => {
 // Ler os valores do attr data- e criar um objeto
 // Adicionar esse objeto em uma lista "global" que representa o carrinho
 
-const onClickPurchase = (evt) => {
+/* const onClickPurchase = (evt) => {
   //Identifica se o botão é de "comprar" e qual produto
   //OBS: Mudei o html para que os botões de "detalhes" e de "comprar" ficassem "simétricos, identificados por classes
   //OBS: Transferi os atributos do botão comprar para o nó "avô" (li): li > div > button
   //console.log(evt.target.nodeName);
   //console.log(evt.target.attributes['class'].value);
   //Identifica o produto
-  const li = evt.target.parentNode.parentNode 
+  const li = evt.target.parentNode.parentNode;
   if (evt.target.nodeName === 'BUTTON' && evt.target.attributes['class'].value=='purchase'){
     //Cria objeto (produto)
     produto = createProduct(li);
@@ -134,7 +134,29 @@ const onClickDetails = (evt) => {
   }
 };
 //Adiciona o eventListener para click no botão de detalhes
-listaProdutos.addEventListener('click', onClickDetails)
+listaProdutos.addEventListener('click', onClickDetails) */
+
+
+//Função de click sintética (com os dois botões, comprar e detalhes)
+const onClick = (evt) => {
+  //Identifica o produto
+  const li = evt.target.parentNode.parentNode;
+  if (evt.target.nodeName === 'BUTTON'){
+    //Cria objeto (produto)
+    produto = createProduct(li); 
+
+    if (evt.target.attributes['class'].value=='purchase'){
+      //Adiciona item na lista do carrinho;
+      addProduct(produto);
+    } 
+    else if(evt.target.attributes['class'].value=='details') {
+      //Informa detalhes do produto
+      alert(`Nome do produto : ${produto.name}\nPreço : R$ ${produto.price.toFixed(2).replace(',', '.')}`);
+    }
+  }
+};
+//Adiciona o eventListener para click no botão de detalhes
+listaProdutos.addEventListener('click', onClick)
 
 
 /*
