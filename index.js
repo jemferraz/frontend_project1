@@ -85,7 +85,7 @@ const addProduct = (produto) => {
 
 //Função para remover um produto da lista do carrinho
 const removeProductByID = (id) => {
-  newListaCarrinho = listaCarrinho.filter(prod => prod['id'] !== id);
+  const newListaCarrinho = listaCarrinho.filter(prod => prod['id'] !== id);
   setItemsInStorage(newListaCarrinho);
 };
 
@@ -143,7 +143,7 @@ const onClick = (evt) => {
   const li = evt.target.parentNode.parentNode;
   if (evt.target.nodeName === 'BUTTON'){
     //Cria objeto (produto)
-    produto = createProduct(li); 
+    produto = createProduct(li);
 
     if (evt.target.attributes['class'].value=='purchase'){
       //Adiciona item na lista do carrinho;
