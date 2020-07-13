@@ -43,7 +43,7 @@ for(li of listaProdutosLi){
   listaProdutosObj.push(produto);
   //console.log(produto);
 }  */
-const listaProdutosObj = listaProdutosLi.map(li => createProduct(li) );
+const listaProdutosObj = listaProdutosLi.map(createProduct);
 
 //Define objeto para "guardar" a lista de itens do carrinho no browser
 const storageHandler = {
@@ -62,7 +62,9 @@ const storageHandler = {
 };
 
 //Função para calcular o valor total do carrinho
-function calculateTotal(listaCarrinho){return listaCarrinho.reduce( (acc, produto) => acc += produto.quantity * produto.price, 0.0 )};
+function calculateTotal(listaCarrinho){
+  return listaCarrinho.reduce((acc, produto) => acc + produto.quantity * produto.price, 0.0 );
+};
 
 //Função para adicionar a lista do carrinho no storage
 const setItemsInStorage = (arr) => {
@@ -195,6 +197,7 @@ const templateToHTML = (produto, template) => {
 const render = () => {
   const itemsHTML = listaCarrinho.map(produto => templateToHTML(produto, template));
   elCarrinho.innerHTML = itemsHTML.join('\n');
+  const totalCarrinho = calculateTotal(listaCarrinho);
   elTotal.innerText = totalCarrinho.toFixed(2).replace('.', ',');
 };
 
